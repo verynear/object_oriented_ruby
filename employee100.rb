@@ -18,18 +18,11 @@ class Employee
   attr_reader :first_name, :last_name
 
   def initialize(input_options_hash)
-    @name = Faker::Name.name
+    @first_name = input_options_hash[:first_name]
+    @last_name = input_options_hash[:last_name]
     @salary = input_options_hash[:salary]
     @active = input_options_hash[:active]
   end
-
-  # def first_name
-  #	@first_name
-  # end
-
-  # def last_name
-  # @last_name
-  # end
 
   def print_info
     puts "#{first_name} #{last_name} makes $#{@salary} a year."
@@ -39,26 +32,18 @@ class Employee
   	@salary *= 1.05
   end
 
-  def a
-  	1
-  end
-
-  def b
-  	a
-  end
 
 end
 
-employee_1 = Employee.new({first_name: 'Martha', 
-			 last_name: 'Stewart', 
-			 salary: 80000, 
-			 active: true})
-employee_2 = Employee.new({first_name: 'James', 
-             last_name: 'Stewart', 
-             salary: 60000, 
-			 active: true})
+employees = []
 
-employee_1.print_info
-employee_2.print_info
-puts employee_2.b
+99.times do |new_employee|
+	new_employee = Employee.new({first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, salary: Faker::Number.number(5), active: Faker::Boolean.boolean})
+	employees << new_employee.print_info
+end
+
+puts employees
+
+
+
 

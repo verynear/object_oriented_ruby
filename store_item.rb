@@ -4,13 +4,13 @@
 
 class Item
 
-	def initialize(input_options_hash)
-		@item_name = input_options_hash[:item_name]
+ def initialize(input_options_hash)
+  @item_name = input_options_hash[:item_name]
 		@item_color = input_options_hash[:item_color]
 		@item_price = input_options_hash[:item_price]
 	end
 
-	def item_name
+	  def item_name
      @first_name
     end
 
@@ -27,5 +27,14 @@ class Item
     end
 end
 
-item1 = Item.new({item_name: 'Wrench', item_color: 'chrome', item_price: '9.99'})
+class Food < Item
+
+  def initialize(input_options_hash)
+    super
+    @shelf_life = input_options_hash[:shelf_life]
+  end
+
+end
+
+item1 = Food.new({item_name: 'Wrench', item_color: 'chrome', item_price: '9.99', shelf_life: 1})
 item1.item_info
